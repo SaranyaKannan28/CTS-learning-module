@@ -1,0 +1,325 @@
+/* ===============================
+   Root Theme Variables
+   =============================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --primary: #007BFF;
+  --accent: #586d84;
+  --light-bg: #e1e8f0;
+  --highlight-bg: rgb(186, 208, 238);
+  --error: red;
+  --success: green;
+}
+
+/* ===============================
+   Base Reset & Body Styles
+   =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #d4e0d5 url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  line-height: 1.6;
+  padding-bottom: 3em;
+}
+
+/* ===============================
+   Typography
+   =============================== */
+h1, h2 {
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  background: linear-gradient(90deg, #007BFF, #586d84);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+.highlight {
+  background: var(--highlight-bg);
+  font-weight: bold;
+}
+
+/* ===============================
+   Navigation
+   =============================== */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--light-bg);
+  padding: 1em;
+  gap: 1em;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #0c0f13;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* ===============================
+   Welcome Banner
+   =============================== */
+#welcomeBanner {
+  background: linear-gradient(135deg, #586d84, #007BFF);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+/* ===============================
+   Table & Gallery
+   =============================== */
+table {
+  width: 100%;
+  border-spacing: 10px;
+  border-collapse: collapse;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.event-img {
+  border: 3px solid #444;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.enlarged {
+  transform: scale(1.5);
+  z-index: 10;
+  position: relative;
+  border-color: var(--primary);
+}
+
+/* ===============================
+   Form Styling
+   =============================== */
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+form {
+  background: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 2px solid var(--primary);
+}
+
+form label {
+  display: block;
+  margin: 1em 0 0.3em;
+  font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.6em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: 2px solid var(--primary);
+}
+
+form button {
+  margin-top: 1em;
+  padding: 0.6em 1.2em;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+#phoneError {
+  color: var(--error);
+  font-size: 0.9em;
+  margin-top: 0.3em;
+}
+
+#charCount {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0.3em;
+  text-align: right;
+}
+
+#eventFeeDisplay {
+  margin-top: 0.5em;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+output {
+  display: block;
+  margin-top: 1.5em;
+  color: var(--success);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ===============================
+   Video Section
+   =============================== */
+#promoVideo {
+  text-align: center;
+}
+
+#promoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+/* ===============================
+   Geolocation
+   =============================== */
+#geoOutput {
+  margin-top: 0.5em;
+  color: darkgreen;
+  font-weight: bold;
+  text-align: center;
+}
+
+#map {
+  height: 400px;
+  width: 80%;
+  margin: 2em auto;
+  border: 1px solid #ccc;
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+}
+
+/* ===============================
+   Multi-Column Text (Example)
+   =============================== */
+#newsBulletin {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+  margin: 2em;
+  padding: 1em;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+footer {
+  text-align: center;
+  padding: 1em;
+  background-color: var(--accent);
+  color: white;
+  margin-top: 2em;
+}
+
+/* ===============================
+   Additional Enhancements
+   =============================== */
+.hidden {
+  visibility: hidden;
+}
+
+.collapsed {
+  display: none;
+}
+
+/* Optional CSS Grid Example */
+#eventGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1em;
+  margin: 2em;
+}
+
+/* ===============================
+   Responsive Design
+   =============================== */
+@media screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container {
+    padding: 1em;
+  }
+
+  h1, h2 {
+    font-size: 1.2em;
+  }
+
+  .event-img {
+    max-width: 90%;
+  }
+
+  #map {
+    width: 95%;
+    height: 300px;
+  }
+
+  #newsBulletin {
+    column-count: 1;
+  }
+}

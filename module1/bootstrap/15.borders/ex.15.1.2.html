@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Borders, Shadows, and Rounded Corners</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .bordered-image {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Borders, Shadows, and Rounded Corners</h2>
+
+        <h3> Border Utilities</h3>
+        <img src="https://via.placeholder.com/150" class="bordered-image border mb-2" alt="Bordered Image">
+        <img src="https://via.placeholder.com/150" class="bordered-image border border-primary mb-2" alt="Primary Border Image">
+        <img src="https://via.placeholder.com/150" class="bordered-image border border-success border-3 mb-2" alt="Success Border Width 3 Image">
+        <img src="https://via.placeholder.com/150" class="rounded-circle mb-2" alt="Rounded Circle Image" style="width: 100px; height: 100px; object-fit: cover;">
+
+        <h3>Shadows and Rounded Pill</h3>
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="card-title">Shadow Card</h5>
+                <p class="card-text">This card has a default shadow.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card shadow-lg mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Large Shadow Card</h5>
+                <p class="card-text">This card has a large shadow.</p>
+                <a href="#" class="btn btn-success">Learn more</a>
+            </div>
+        </div>
+
+        <a href="#" class="btn btn-info rounded-pill mt-3">Rounded Pill Button</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

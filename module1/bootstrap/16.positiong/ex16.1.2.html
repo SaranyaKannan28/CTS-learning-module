@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Positioning Utilities</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .relative-container {
+            position: relative;
+            display: inline-block;
+        }
+        .badge-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 8px;
+            font-size: 0.8rem;
+        }
+        .overlayed-image {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>16. Positioning Utilities</h2>
+
+        <h3>Exercise 16.1: Fixed Footer</h3>
+        <div class="content" style="margin-bottom: 60px;">
+            <p>This is the main content of the page. The footer will be fixed at the bottom.</p>
+        </div>
+        <footer class="fixed-footer">
+            <p>&copy; 2023 My Website</p>
+        </footer>
+
+        <h3 class="mt-5">Exercise 16.2: Overlay Badge</h3>
+        <div class="relative-container">
+            <img src="https://via.placeholder.com/150" class="overlayed-image" alt="Overlayed Image">
+            <span class="badge-overlay">New</span>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

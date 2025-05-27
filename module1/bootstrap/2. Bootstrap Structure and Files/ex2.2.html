@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap Toggle Alignment</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+</head>
+<body>
+
+  <div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-primary mb-4">Centered Toggle Button</h1>
+    
+    <!-- ✅ Properly aligned toggle button -->
+    <p>
+      <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Toggle Collapse
+      </a>
+    </p>
+
+    <div class="collapse w-100" id="collapseExample">
+      <div class="card card-body text-center">
+        This content is shown/hidden using Bootstrap's JavaScript plugin.
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

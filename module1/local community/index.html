@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Community Event Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="help.html" target="_blank">Help</a></li>
+    </ul>
+  </nav>
+
+  <div id="welcomeBanner">
+    Welcome, valued resident! Enjoy our community events.
+    <span style="color:red; font-weight:bold;">Special Offer: Free Entry for First 100 Registrants!</span>
+  </div>
+
+  <main>
+    <section id="home">
+      <h1 class="highlight">Welcome to the Local Community Event Portal</h1>
+      <p>Register for events, check locations, and access basic city services.</p>
+    </section>
+
+    <section id="events">
+      <h2>Upcoming Events</h2>
+      <p class="highlight">Don’t miss the Summer Festival this weekend!</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Community Event Gallery</h2>
+      <table>
+        <caption>Memorable Moments from Recent Events</caption>
+        <tr>
+          <td><img src="img1.jpg" alt="Music Night" class="event-img" ondblclick="toggleImageSize(this)"></td>
+          <td><img src="img2.jpg" alt="Food Fair" class="event-img" ondblclick="toggleImageSize(this)"></td>
+          <td><img src="img3.jpg" alt="Charity Run" class="event-img" ondblclick="toggleImageSize(this)"></td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="promoVideo">
+      <h2>Event Promo Video</h2>
+      <div id="promoContainer">
+        <video id="promo" width="480" controls oncanplay="videoReady()">
+          <source src="sample-event-promo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <p id="videoStatus"></p>
+      </div>
+    </section>
+
+    <section id="register">
+      <h2>Event Registration Form</h2>
+      <div class="form-container">
+        <form id="regForm" onsubmit="event.preventDefault(); showConfirmation(); formIsDirty = false;">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" required />
+
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" required onblur="validatePhone()" />
+          <div id="phoneError"></div>
+
+          <label for="date">Date:</label>
+          <input type="date" id="date" required />
+
+          <label for="eventType">Event Type:</label>
+          <select id="eventType" onchange="showEventFee()" required>
+            <option value="">-- Select --</option>
+            <option value="Music Night">Music Night</option>
+            <option value="Food Fair">Food Fair</option>
+            <option value="Art Workshop">Art Workshop</option>
+            <option value="Charity Run">Charity Run</option>
+          </select>
+          <div id="eventFeeDisplay"></div>
+
+          <label for="message">Message:</label>
+          <textarea id="message" rows="4" onkeyup="countChars()"></textarea>
+          <div id="charCount">Characters: 0</div>
+
+          <button type="submit">Register</button>
+          <button type="button" onclick="clearPreferences()">Clear Preferences</button>
+          <output id="confirmation"></output>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2>Find Nearby Events</h2>
+      <div style="text-align: center;">
+        <button id="findNearbyBtn">Find Nearby Events</button>
+        <p id="geoOutput"></p>
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email us at <span class="highlight">support@localportal.gov</span> or call 123-456-7890.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Local City Council</p>
+  </footer>
+
+  <script>
+    function validatePhone() {
+      const phone = document.getElementById('phone').value.trim();
+      const phoneError = document.getElementById('phoneError');
+      const pattern = /^\d{3}[- ]?\d{3}[- ]?\d{4}$/;
+      phoneError.textContent = pattern.test(phone) ? '' : 'Invalid phone number format.';
+    }
+
+    function countChars() {
+      document.getElementById('charCount').textContent =
+        'Characters: ' + document.getElementById('message').value.length;
+    }
+
+    function toggleImageSize(img) {
+      img.classList.toggle('enlarged');
+    }
+
+    function videoReady() {
+      document.getElementById('videoStatus').textContent = 'Video ready to play';
+    }
+
+    function showConfirmation() {
+      const name = document.getElementById('name').value.trim();
+      const eventType = document.getElementById('eventType').value;
+      document.getElementById('confirmation').textContent =
+        `Thanks, ${name}, for registering for ${eventType}!`;
+      formIsDirty = false;
+    }
+
+    function showEventFee() {
+      const eventType = document.getElementById('eventType').value;
+      const fees = {
+        "Music Night": "$20",
+        "Food Fair": "$15",
+        "Art Workshop": "$25",
+        "Charity Run": "$10"
+      };
+      document.getElementById('eventFeeDisplay').textContent =
+        eventType ? `Event Fee: ${fees[eventType]}` : '';
+      localStorage.setItem("preferredEvent", eventType);
+    }
+
+    window.onload = () => {
+      const preferred = localStorage.getItem("preferredEvent");
+      if (preferred) {
+        document.getElementById("eventType").value = preferred;
+        showEventFee();
+      }
+    };
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      alert("Preferences cleared!");
+      location.reload();
+    }
+
+    let formIsDirty = false;
+    document.getElementById('regForm').addEventListener('input', () => formIsDirty = true);
+    window.onbeforeunload = () => {
+      if (formIsDirty) return "You have unsaved changes. Are you sure you want to leave?";
+    };
+
+    document.getElementById("findNearbyBtn").addEventListener("click", () => {
+      const output = document.getElementById("geoOutput");
+      const mapDiv = document.getElementById("map");
+
+      if (!navigator.geolocation) {
+        output.textContent = "Geolocation not supported by your browser.";
+        mapDiv.style.display = 'none';
+        return;
+      }
+
+      output.textContent = "Locating...";
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          output.textContent = `Your location: Latitude ${latitude.toFixed(5)}, Longitude ${longitude.toFixed(5)}`;
+          initMap(latitude, longitude, mapDiv);
+        },
+        (error) => {
+          mapDiv.style.display = 'none';
+          output.textContent = "Unable to retrieve your location.";
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+    });
+
+    function initMap(lat, lng, mapElement) {
+      mapElement.style.display = 'block';
+      mapElement.innerHTML = `<p>Map would be displayed here centered at: ${lat.toFixed(5)}, ${lng.toFixed(5)}</p>`;
+      mapElement.style.backgroundColor = '#e0e0e0';
+      mapElement.style.display = 'flex';
+      mapElement.style.alignItems = 'center';
+      mapElement.style.justifyContent = 'center';
+      mapElement.style.color = '#555';
+    }
+  </script>
+</body>
+</html>

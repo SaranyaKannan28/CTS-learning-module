@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Display and Visibility</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hidden-mobile {
+            display: none;
+        }
+        @media (min-width: 768px) { /* Medium screens and up */
+            .visible-tablet {
+                display: block;
+            }
+            .hidden-mobile {
+                display: block;
+            }
+        }
+        @media (max-width: 767.98px) { /* Small screens */
+            .visible-tablet {
+                display: none;
+            }
+        }
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 1px solid #dee2e6;
+            height: 200px; /* For example height */
+        }
+        .main-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Display and Visibility</h2>
+
+        <h3>Hiding/Showing Sections</h3>
+        <div class="d-block d-md-none bg-info text-white p-3 mb-2 text-center">Visible on extra-small and small screens</div>
+        <div class="d-none d-md-block bg-success text-white p-3 mb-2 text-center">Visible on medium screens and up</div>
+
+        <div class="d-lg-flex bg-light p-3 mb-2">
+            <div class="mr-lg-3">Flex item 1</div>
+            <div>Flex item 2</div>
+        </div>
+
+        <h3 class="mt-4">Responsive Sidebar</h3>
+        <div class="row">
+            <div class="col-md-8 main-content">
+                <p>This is the main content area. The sidebar will appear on the right on tablets and larger screens.</p>
+            </div>
+            <div class="col-md-4 visible-tablet sidebar">
+                <h5>Sidebar</h5>
+                <p>This sidebar is visible on tablets and larger screens.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

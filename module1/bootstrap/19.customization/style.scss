@@ -1,0 +1,29 @@
+// 1. Import Bootstrap functions first
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Override Bootstrap variables **before** the rest
+$primary: #ff5722; // Custom orange primary color
+$border-radius: 1rem; // Custom border radius for all components
+
+// Optional: Override other theme colors or fonts here
+//$font-family-base: 'Segoe UI', sans-serif;
+
+// 3. Import Bootstrap required variables and mixins
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// 4. Import full Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// 5. Add your custom styles (optional)
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.btn-custom {
+  @extend .btn;
+  @extend .btn-primary;
+  font-weight: bold;
+  border-radius: 2rem; // even more custom if needed
+}
